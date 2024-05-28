@@ -13,18 +13,27 @@ myLibrary.push(book1);
 myLibrary.push(book2);
 
 function addBookToLibrary() {
-    const book3 = new Book(prompt('Book name?'), prompt('Book author'), prompt('Book genre'));
-    myLibrary.push(book3);
+      let book = document.querySelector('#form');
+
 }
 
-let card1, card2, card3;
+let card1, card2;
 
-document.addEventListener("DOMContentLoaded", function () {
-     card1 = document.querySelector('#book1');
-     card2 = document.querySelector('#book2');
-     card3 = document.querySelector('#book3');
-     addBookToLibrary()
-     display();
+document.addEventListener("DOMContentLoaded", () => {
+    card1 = document.querySelector('#book1');
+    card2 = document.querySelector('#book2');
+    addBookToLibrary()
+    display();
+    
+    let button = document.querySelector('#newbook');
+    button.addEventListener('click', () => {
+        let form = document.querySelector('#form').style.display = 'block';
+    
+    let closeButton = document.querySelector('#closebutton');
+    closeButton.addEventListener('click', ()=>{
+        let form = document.querySelector('#form').style.display = 'none';
+    })
+    });
 })
 
 function display() {
@@ -37,10 +46,7 @@ function display() {
     Author: ${myLibrary[1].author}<br>
     Genre: ${myLibrary[1].genre}<br><br>`;
 
-    card3.innerHTML = `Book: ${myLibrary[2].name}<br>
-    Author: ${myLibrary[2].author}<br>
-    Genre: ${myLibrary[2].genre}`;
-
-
 }
+
+
 
