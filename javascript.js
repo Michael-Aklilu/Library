@@ -13,40 +13,36 @@ myLibrary.push(book1);
 myLibrary.push(book2);
 
 function addBookToLibrary() {
-      let book = document.querySelector('#form');
+    
 
 }
 
-let card1, card2;
 
 document.addEventListener("DOMContentLoaded", () => {
-    card1 = document.querySelector('#book1');
-    card2 = document.querySelector('#book2');
+    
     addBookToLibrary()
     display();
-    
+
     let button = document.querySelector('#newbook');
     button.addEventListener('click', () => {
         let form = document.querySelector('#form').style.display = 'block';
-    
-    let closeButton = document.querySelector('#closebutton');
-    closeButton.addEventListener('click', ()=>{
-        let form = document.querySelector('#form').style.display = 'none';
-    })
+
+        let closeButton = document.querySelector('#closebutton');
+        closeButton.addEventListener('click', () => {
+            let form = document.querySelector('#form').style.display = 'none';
+        })
     });
 })
 
 function display() {
 
-    card1.innerHTML = `Book: ${myLibrary[0].name}<br>
-    Author: ${myLibrary[0].author}<br>
-    Genre: ${myLibrary[0].genre}<br><br>`;
+    let container = document.querySelector("#container");
+    for(let book of myLibrary){
+        let bookDiv = document.createElement("div");
+        bookDiv.innerHTML = `Name: ${book.name}<br>
+        Author: ${book.author}<br> Genre: ${book.genre}`;
+        container.appendChild(bookDiv);
+    }
 
-    card2.innerHTML = `Book: ${myLibrary[1].name}<br>
-    Author: ${myLibrary[1].author}<br>
-    Genre: ${myLibrary[1].genre}<br><br>`;
 
 }
-
-
-
