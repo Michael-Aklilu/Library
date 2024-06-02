@@ -32,6 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
             let form = document.querySelector('#form').style.display = 'none';
         })
     });
+    let submit = document.querySelector("#submitbutton");
+    submit.addEventListener("click",()=>{
+        let bookInput = document.querySelector('#book');
+        let authorInput = document.querySelector('#author');
+        let genreInput = document.querySelector('#genre');
+
+        let input = new Book(`${bookInput.value}`, `${authorInput.value}`, `${genreInput.value}`);
+        myLibrary.push(input);
+
+    })
 })
 
 function display() {
