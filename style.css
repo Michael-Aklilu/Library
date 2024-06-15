@@ -15,3 +15,6 @@ body{
     gap: 3em;
     margin-top: 3em;
 }
+div button{
+    height: min-content;
+}
