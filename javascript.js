@@ -34,9 +34,12 @@ function display() {
 
     for (let book of myLibrary) {
         let bookDiv = document.createElement("div");
+        let removeBtn = document.createElement("button");
         bookDiv.innerHTML = `Name: ${book.name}<br>
         Author: ${book.author}<br> Genre: ${book.genre}`;
+        removeBtn.textContent = "Remove";
         container.appendChild(bookDiv);
+        container.appendChild(removeBtn);
     }
 }
 
