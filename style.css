@@ -1,9 +1,17 @@
 #container{
     display: flex;
-    border-style: solid;
+    border-style: none;
+    gap: 0.5em;
 }
 div{
     border: solid 1px;
     padding: 0.5em;
     
+}
+h1{
+    display: flex;
+    justify-content: center;
+}
+#header{
+    border-style: none;
 }
