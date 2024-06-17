@@ -1,13 +1,14 @@
 const myLibrary = [];
 
-function Book(name,author,genre){
+function Book(name,author,genre, read){
     this.name = name;
     this.author = author;
     this.genre = genre;
+    this.read = read;
 }
 
-const book1 = new Book('Harry Potter', 'JK Rowling', 'Fantasy');
-const book2 = new Book('Percy Jackson', 'Rick Riordan','Fantasy');
+const book1 = new Book('Harry Potter', 'JK Rowling', 'Fantasy', 'Yes');
+const book2 = new Book('Percy Jackson', 'Rick Riordan','Fantasy','Yes');
 
 myLibrary.push(book1);
 myLibrary.push(book2);
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let bName = document.querySelector('#Name');
     let author = document.querySelector('#Author');
     let genre = document.querySelector('#Genre');
+    let read = document.querySelector('#Read');
     const addBtn = document.querySelector('#Add');
     const closeBtn = document.querySelector('#closeBtn');
     const submitBtn = document.querySelector('#submitBtn');
@@ -42,11 +44,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
    
     function addBook(){
-      let book = new Book(`${bName.value}`, `${author.value}`, `${genre.value}`);
+      let book = new Book(`${bName.value}`, `${author.value}`, `${genre.value}`, `${read.value}`);
       myLibrary.push(book);
       bName.value = "";
       author.value = "";
       genre.value = "";
+      read.value = "";
     }  
    
     function display(){
@@ -55,14 +58,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
         
         myLibrary.forEach((book,index) =>{
             let card = document.createElement('div');
-            card.innerHTML = `Book: ${book.name}<br> Author: ${book.author}<br> Genre: ${book.genre} <br>`
+            card.innerHTML = `Book: ${book.name}<br> Author: ${book.author}<br> Genre: ${book.genre} <br> Read: ${book.read} <br>`;
+            let readBtn = document.createElement('button');
+            readBtn.textContent = 'Read';
             
+            readBtn.addEventListener('click', ()=>{
+                  changeRead();
+            })
+
             let removeBtn = document.createElement('button');
             removeBtn.addEventListener('click',()=>{
             removeBook(index);
             });
             removeBtn.textContent = 'Remove';   
             container.appendChild(card);
+            card.appendChild(readBtn);
             card.appendChild(removeBtn);
           })
     } 
@@ -70,6 +80,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         myLibrary.splice(index, 1);
         display();
      }
+
+    function changeRead(){
+          
+    }
 
     display();
 })
