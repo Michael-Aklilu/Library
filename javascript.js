@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let author = document.querySelector('#Author');
     let genre = document.querySelector('#Genre');
     const addBtn = document.querySelector('#Add');
-    const form = document.querySelector('form');
     const closeBtn = document.querySelector('#closeBtn');
     const submitBtn = document.querySelector('#submitBtn');
     const dialog = document.querySelector('dialog');
@@ -54,14 +53,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const container =  document.querySelector('#container');
         container.innerHTML = ''; 
         
-        for(let book of myLibrary){
+        myLibrary.forEach((book,index) =>{
             let card = document.createElement('div');
             card.innerHTML = `Book: ${book.name}<br> Author: ${book.author}<br> Genre: ${book.genre} <br>`
+            
             let removeBtn = document.createElement('button');
+            removeBtn.addEventListener('click',()=>{
+            removeBook(index);
+            });
             removeBtn.textContent = 'Remove';   
             container.appendChild(card);
             card.appendChild(removeBtn);
-          }
+          })
     } 
+    function removeBook(index){
+        myLibrary.splice(index, 1);
+        display();
+     }
+
     display();
 })
