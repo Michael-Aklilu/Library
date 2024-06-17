@@ -9,11 +9,21 @@
 <body>
     <h1>My Library</h1>
     <div id="header">
-        <button>Add book</button>
+        <button id = "Add">Add book</button>
     </div>
-    <div id="container">
-        
-    </div>
+    <div id="container"></div>
+        <dialog closed id="dialog">
+            <form method="dialog" id="form">
+                <label for="Name">Name</label>
+                <input type="text" id="Name" name="Name">
+                <label for="Author">Author</label>
+                <input type="text" id="Author" name="Author">
+                <label for="Genre">Genre</label>
+                <input type="text" id="Genre" name="Genre">
+                <button id="submitBtn"type="submit">Submit</button>
+                <button id="closeBtn">Close</button>
+            </form>
+        </dialog>
     <script src="javascript.js"></script>
 </body>
 </html>
