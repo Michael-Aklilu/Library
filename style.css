@@ -1,9 +1,11 @@
 #container{
     display: flex;
+    flex-wrap: wrap;
     border-style: none;
     gap: 0.5em;
 }
 div{
+    
     border: solid 1px;
     padding: 0.5em;
     
