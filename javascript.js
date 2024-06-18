@@ -13,6 +13,14 @@ const book2 = new Book('Percy Jackson', 'Rick Riordan','Fantasy','Yes');
 myLibrary.push(book1);
 myLibrary.push(book2);
 
+Book.prototype.toggleRead = function(){
+   if(this.read === 'Yes')
+      this.read = 'No';
+   else
+      this.read = 'Yes';
+}
+
+
 
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -63,7 +71,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
             readBtn.textContent = 'Read';
             
             readBtn.addEventListener('click', ()=>{
-                  changeRead();
+                  book.toggleRead();
+                  display();
             })
 
             let removeBtn = document.createElement('button');
@@ -81,9 +90,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         display();
      }
 
-    function changeRead(){
-          
-    }
 
     display();
 })
