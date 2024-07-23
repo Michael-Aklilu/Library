@@ -23,3 +23,10 @@ function displayBook() {
     </tr>`;
   }
 }
+const newBook = document.querySelector(".newButton");
+const dialog = document.querySelector("dialog");
+const form = document.querySelector("form");
+newBook.addEventListener("click", () => {
+  dialog.showModal();
+  form.preventDefualt();
+});
