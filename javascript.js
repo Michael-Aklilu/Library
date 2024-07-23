@@ -1,6 +1,4 @@
 const myLibrary = [];
-const firstBook = new Book("Harry Potter", "Fantasy", "J.K Rowling", "Yes");
-myLibrary.push(firstBook);
 
 function Book(title, genre, author, read) {
   this.title = title;
@@ -14,6 +12,7 @@ function addBookToLibrary(title, genre, author, read) {
 }
 function displayBook() {
   const table = document.querySelector("#table");
+  table.innerHTML = "";
   for (let book of myLibrary) {
     table.innerHTML += `<tr>
         <td>${book.title}</td> 
@@ -26,7 +25,18 @@ function displayBook() {
 const newBook = document.querySelector(".newButton");
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
+const closeForm = document.querySelector("#close");
 newBook.addEventListener("click", () => {
   dialog.showModal();
-  form.preventDefualt();
+});
+closeForm.addEventListener("click", () => {
+  event.preventDefault();
+  let title = document.querySelector("#title").value;
+  let genre = document.querySelector("#genre").value;
+  let author = document.querySelector("#author").value;
+  let read = document.querySelector("#read").value;
+  addBookToLibrary(title, genre, author, read);
+  dialog.close();
+  form.reset();
+  displayBook();
 });
