@@ -10,17 +10,27 @@ function addBookToLibrary(title, genre, author, read) {
   let book = new Book(title, genre, author, read);
   myLibrary.push(book);
 }
+const row = document.querySelector("#addRow");
 function displayBook() {
-  const table = document.querySelector("#table");
-  table.innerHTML = "";
-  for (let book of myLibrary) {
-    table.innerHTML += `<tr>
+  row.innerHTML = "";
+  myLibrary.forEach((book, index) => {
+    row.innerHTML += `<tr>
         <td>${book.title}</td> 
         <td>${book.genre}</td>
         <td>${book.author}</td>
         <td>${book.read}</td>
-    </tr>`;
-  }
+        <td><button class="removeBtn" data-index = "${index}">Remove</button></td>     
+    </tr>
+    `;
+  });
+  const removeBtns = row.querySelectorAll(".removeBtn");
+  removeBtns.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      let rowIndex = event.target.getAttribute("data-index");
+      myLibrary.splice(rowIndex, 1);
+      displayBook();
+    });
+  });
 }
 const newBook = document.querySelector(".newButton");
 const dialog = document.querySelector("dialog");
