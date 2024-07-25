@@ -37,7 +37,7 @@ function displayBook() {
     button.addEventListener("click", (event) => {
       let rowIndex = event.target.getAttribute("data-index");
       myLibrary[rowIndex].read =
-        myLibrary[rowIndex].read === "Yes" ? "No" : "Yes";
+        myLibrary[rowIndex].read === "Yes" || "yes" ? "No" : "Yes";
       displayBook();
     });
   });
