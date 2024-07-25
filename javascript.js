@@ -19,15 +19,25 @@ function displayBook() {
         <td>${book.genre}</td>
         <td>${book.author}</td>
         <td>${book.read}</td>
-        <td><button class="removeBtn" data-index = "${index}">Remove</button></td>     
+        <td><button class="removeBtn" data-index = "${index}">Remove</button></td> 
+        <td><button class = "readBtn" data-index = "${index}">Read</button></td>    
     </tr>
     `;
   });
   const removeBtns = row.querySelectorAll(".removeBtn");
+  const readBtns = row.querySelectorAll(".readBtn");
   removeBtns.forEach((button) => {
     button.addEventListener("click", function (event) {
       let rowIndex = event.target.getAttribute("data-index");
       myLibrary.splice(rowIndex, 1);
+      displayBook();
+    });
+  });
+  readBtns.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      let rowIndex = event.target.getAttribute("data-index");
+      myLibrary[rowIndex].read =
+        myLibrary[rowIndex].read === "Yes" ? "No" : "Yes";
       displayBook();
     });
   });
